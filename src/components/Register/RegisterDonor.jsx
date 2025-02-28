@@ -30,6 +30,7 @@ const RegisterDonor = () => {
           username: formData.username,
           email: formData.email,
           password: formData.password,
+          role: "DONOR",
         }),
       });
 
