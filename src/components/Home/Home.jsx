@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import MiddleSection from "./MiddleSection";
 import Footer from "./Footer";
 import { toast } from "react-hot-toast";
+import GenAi from "./GenAi";
 
 const Home = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
@@ -93,6 +94,7 @@ const Home = ({ currentUser, setCurrentUser }) => {
       </motion.nav>
       <Landing />
       <MiddleSection />
+     <GenAi/> 
       <Footer />
     </div>
   );

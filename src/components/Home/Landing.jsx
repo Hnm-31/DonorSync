@@ -14,7 +14,7 @@ const Landing = () => {
       <div className="m-5">
         <motion.img
           className="min-w-[200px]"
-          src="https://images.pexels.com/photos/5669602/pexels-photo-5669602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="donate2.jpg"
           alt="Donation"
         />
       </div>
@@ -25,15 +25,15 @@ const Landing = () => {
         transition={{ delay: 0.5 }}
         className="bg-white max-w-[55%] m-5 flex flex-col xs:max-w-max xs:w-5/6 overflow-hidden h-fit w-[700px] mr-10 rounded-xl p-6 xs:p-4 bg-opacity-70"
       >
-        <motion.img
+        {/* <motion.img
           initial={{ y: 100, opacity: 0, rotate: -60 }}
           animate={{ y: 0, opacity: 1, rotate: 0 }}
           exit={{ opacity: 0, rotate: -90 }}
           transition={{ delay: 0.6 }}
           className="max-w-[200px] xs:max-w-[120px]"
-          src="https://res.cloudinary.com/dd6sontgf/image/upload/v1712747549/_Pngtree_law_and_justice_illustration_3718775-removebg-preview_krbxyh.png"
+          // src="https://res.cloudinary.com/dd6sontgf/image/upload/v1712747549/_Pngtree_law_and_justice_illustration_3718775-removebg-preview_krbxyh.png"
           alt="Logo"
-        />
+        /> */}
         <p className="text-pretty flex w-full flex-col font-poppins font-bold text-white text-4xl sx:text-3xl xs:text-xl">
           <span className="text-orange-500">DonorSync</span>
           <ReactTyped

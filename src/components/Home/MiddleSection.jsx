@@ -3,6 +3,7 @@ import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import FAQ from "./FAQ";
 
 const MiddleSection = () => {
   const [ref1, inView1] = useInView({ threshold: 0.2 });
@@ -125,7 +126,7 @@ const MiddleSection = () => {
           <div className="w-full">
             <ReactTyped
               className="text-blue-600 font-poppins font-bold text-6xl sx:text-4xl xs:text-3xl"
-              strings={["Are You a Supplier?"]}
+              strings={[" Are You a Supplier ?"]}
               typeSpeed={40}
               backSpeed={50}
             />
@@ -154,6 +155,7 @@ const MiddleSection = () => {
           />
         </motion.div>
       </div>
+      <FAQ/>
     </div>
   );
 };
