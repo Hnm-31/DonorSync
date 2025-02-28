@@ -5,19 +5,43 @@ import { toast } from "react-hot-toast";
 const RegisterDonor = () => {
   const [formData, setFormData] = useState({
     username: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
+
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match.");
       return;
     }
-    toast.success("Donor registered successfully!");
-    navigate("/login");
+
+    try {
+      const response = await fetch("http://localhost:8080/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to register. Please try again.");
+      }
+
+      toast.success("Donor registered successfully!");
+      navigate("/login");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -31,6 +55,16 @@ const RegisterDonor = () => {
               type="text"
               value={formData.username}
               onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              className="w-full p-2 border rounded-lg"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full p-2 border rounded-lg"
               required
             />
