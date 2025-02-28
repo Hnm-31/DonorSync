@@ -401,14 +401,14 @@ const Login = ({ setCurrentUser }) => {
       // Send login request to the backend
       const response = await axios.post("/login", {
         email,
-        password
-    
+        password,
+        role,
       });
 
       // If login is successful
       if (response.data.success) {
-        const { result, role } = response.data.user;
-        setCurrentUser({ result, role }); // Set the current user in state
+        const { email, role } = response.data.user;
+        setCurrentUser({ email, role }); // Set the current user in state
         toast.success("Login successful!");
 
         // Redirect based on role
