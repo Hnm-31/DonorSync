@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import API1 from "../Api/Api1"; // Import the axios instance
 
-const Login = ({ setCurrentUser }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -16,14 +16,11 @@ const Login = ({ setCurrentUser }) => {
       const response = await API1.post("/login", { email, password });
 
       // Extract token and role from the response
-      const { token, role } = response.data;
+      const { token, role } = response.data; // Fixed: Added role extraction
 
       // Store token and role in localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-
-      // Set the current user in state (if needed)
-      setCurrentUser({ email, role });
 
       // Redirect based on role
       switch (role) {
@@ -38,13 +35,15 @@ const Login = ({ setCurrentUser }) => {
           break;
         default:
           toast.error("Invalid role. Please contact support.");
-          break;
+          return;
       }
 
       toast.success("Login successful!");
     } catch (error) {
       console.error("Login error:", error);
-      toast.error("Invalid email or password. Please try again.");
+      toast.error(
+        error.response?.data?.message || "Invalid email or password. Please try again."
+      );
     }
   };
 
